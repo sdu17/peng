@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Peng. All rights reserved.
 //
 
+/* What's the question? Is that permutation problem? */
+
 #include <iostream>
 
 using namespace std;
