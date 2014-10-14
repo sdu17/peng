@@ -5,40 +5,55 @@
 //  Created by Peng on 10/2/14.
 //  Copyright (c) 2014 Peng. All rights reserved.
 //
+/*
+ Questions should be asked:
+ ASCII or Unicode?
+ Capital sensitive?
+ multiple spaces count for duplicate?
+ Assume empty string should return no duplicate?
+ */
 
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-int main(int argc, const char * argv[]) {
-
-    // insert code here...
-    //std::cout << "Hello, World!\n";
-    cout << "input a string here"<< endl;
-    char s[1000];
-    cin.getline(s, 1000);
-
-    //cout << s << endl;
-    cout << "duplicate char?\t";
+bool duplicate_check(string str){
     int count[256] = {0};
-    int index;
-    // write a function to make your code readable
-    if (strlen(s) > 256){
-        cout << "yes\n" ;
-    }else{
-        int flag = 0;
-        for ( int i = 0; i < strlen(s); i++){
-            index = (int) s[i];
-            count[index] += 1;
-            if (count[index]>1) {
-                flag = 1;
-                break;
+    
+    if (str.length() == 0){
+        return false;
+    } else if (str.length() > 256) {
+        return true;
+    } else {
+        for (int i=0; i < str.length(); i++){
+            if (count[str[i]] > 0) {
+                return true;
             }
+            count[str[i]]++;
         }
-        if (flag == 1)  cout << "yes"<< endl;
-        else cout << "no" << endl;
+    }
+    return false;
+}
+
+int main(int argc, const char * argv[]) {
+    string str = "";
+    cout << "Input a string: ";
+
+    while (getline(cin, str)){
+        if (str == "exit") {
+            break;
+        }
+        bool result = duplicate_check(str);
+        if (result){
+            cout << "duplicate? yes" << endl;
+        } else {
+            cout << "duplicate? no" << endl;
+        }
+        
+        cout << "Input a string: ";
     }
 
     return 0;
 }
+
