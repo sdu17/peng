@@ -5,6 +5,7 @@
 //  Created by Peng on 10/2/14.
 //  Copyright (c) 2014 Peng. All rights reserved.
 //
+/* Yours is okay, but solution in book is more clear and intuitive */
 
 #include <iostream>
 
